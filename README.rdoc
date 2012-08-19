@@ -1,0 +1,5 @@
+= My zsh dotfiles
+
+Requires oh-my-zsh to be installed.
+
+run install.sh to setup symlinks
