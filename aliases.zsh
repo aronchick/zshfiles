@@ -71,6 +71,9 @@ if [[ $IS_MAC -eq 1 ]]; then
     # rebuild Launch Services to remove duplicate entries on Open With menu
     alias rebuildopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
     alias defhist='history 1 | grep "defaults"'
+
+    alias b2d='/Users/daronchick/.boot2docker/b2d.sh && $(/usr/local/bin/boot2docker shellinit) && docker version'
+
 fi
 
 # -------------------------------------------------------------------
@@ -82,19 +85,11 @@ alias af='cd ~/Code/ayafi'
 alias afd='cd /opt/myenv'
 alias v='vim'
 alias bu='brew update; brew upgrade; brew cleanup; brew doctor'
-
+alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 # -------------------------------------------------------------------
 # remote machines
 # -------------------------------------------------------------------
-#alias 'palantir=ssh mhn@palantir.ome.ksu.edu -p 11122'
-#alias 'pvnc=open vnc://palantir.ome.ksu.edu'
-#alias 'ksunix=ssh mhn@unix.ksu.edu'
-#alias 'veld=ssh mhn@veld.ome.ksu.edu'
-#alias 'dev=ssh mhn@ome-dev-as1.ome.campus'
-#alias 'tools=ssh mhn@tools.ome.ksu.edu'
-#alias 'wf=ssh markn@markn.webfactional.com'
-#alias 'chef=ssh mark@129.130.49.121'
-
+alias sshdt='~/bin/ssh-screen 375thsty.sea.corp.google.com main'
 # -------------------------------------------------------------------
 # database
 # -------------------------------------------------------------------
@@ -229,3 +224,8 @@ alias nomz='ps aux | less'
 alias nomnom='killall'
 alias cya='reboot'
 alias kthxbai='halt'
+
+# ---------------------------------------------------------------------
+# AWS
+# ---------------------------------------------------------------------
+alias aws-sg="aws ec2 describe-security-groups | jq '.[][] | select(.GroupName | contains(\"aronchick\")) |  {GroupName, GroupId}'"

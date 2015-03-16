@@ -228,3 +228,15 @@ function psax() {
   ps auxwwwh | grep "$@" | grep -v grep
 }
 
+# --------------------------------
+# boot 2 docker all setup steps
+# from: 
+# --------------------------------
+function b2d() {
+boot2docker init
+boot2docker start
+$(boot2docker shellinit)
+docker run hello-world
+boot2docker status
+docker version
+}
